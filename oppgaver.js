@@ -25,8 +25,10 @@ const temperaturer = [-4, -6, -2, 1, -8, -11, -3];
 //     hilsen("Ola") -> "Hei, Ola!"
 //     Tips: bruk en template literal: `Hei, ${navn}!`
 function hilsen(navn) {
-  // LØSNING
+  return navn;
 }
+
+hilsen(Fabian);
 
 // Oppgave 2: Hvor mange blokker trengs til gulvet i en hytte på 4 x 5 blokker?
 //     Returner arealet av et rektangel (bredde ganger høyde)
@@ -228,18 +230,4 @@ function toppTre(resultater) {
 // Skriv en kort egenvurdering av arbeidet ditt. Skriv rett etter kolonet.
 // Dette fikk jeg godt til:
 // Dette var vanskelig:
-<<<<<<< Updated upstream
 // Dette vil jeg øve mer på:
-
-
-
-
-
-
-
-
-
-
-=======
-// Dette vil jeg øve mer på:
->>>>>>> Stashed changes
