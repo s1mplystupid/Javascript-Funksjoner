@@ -24,20 +24,25 @@ const temperaturer = [-4, -6, -2, 1, -8, -11, -3];
 //     hilsen("Ola") -> "Hei, Ola!"
 //     Tips: bruk en template literal: `Hei, ${navn}!`
 function hilsen(navn) {
-  // LØSNING
+
+  return `Hei, ${navn}!`
 }
+
 
 // Oppgave 2: Hvor mange blokker trengs til gulvet i en hytte på 4 x 5 blokker?
 //     Returner arealet av et rektangel (bredde ganger høyde)
 function rektangelAreal(bredde, hoyde) {
-  // LØSNING
+  
+  return bredde * hoyde;
 }
+
 
 // Oppgave 3: En venn i USA spør på Discord hvor kaldt det er i Tromsø.
 //     Gjør om celsius til fahrenheit.  Formel: F = C * 9/5 + 32
 //     (Den motsatte formelen er C = (F - 32) * 5/9.)
 function celsiusTilFahrenheit(celsius) {
-  // LØSNING
+
+  return (celsius * 9) / 5 + 32;
 }
 
 
@@ -46,7 +51,11 @@ function celsiusTilFahrenheit(celsius) {
 // Oppgave 4: Værappen skal regne ut ukas gjennomsnitt. Første steg: summen.
 //     Returner summen av alle tallene i en array. Bruk en for-løkke.
 function sum(tall) {
-  // LØSNING
+  let total = 0
+
+  for 
+
+  return total;
 }
 
 // Oppgave 5: Returner gjennomsnittet av tallene. Gjenbruk sum()!
