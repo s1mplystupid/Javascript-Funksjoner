@@ -7,7 +7,6 @@
 //   pluss(2, 3);             // kaller funksjonen -> 5
 //
 //   Se README.md for mer informasjon om oppgaven.
-// Der det ikke er oppgitt variabel, lager du egen. Eks temperatur. 
 // =====================================================
 
 // #####################################################
@@ -25,10 +24,8 @@ const temperaturer = [-4, -6, -2, 1, -8, -11, -3];
 //     hilsen("Ola") -> "Hei, Ola!"
 //     Tips: bruk en template literal: `Hei, ${navn}!`
 function hilsen(navn) {
-  return navn;
+  // LØSNING
 }
-
-hilsen(Fabian);
 
 // Oppgave 2: Hvor mange blokker trengs til gulvet i en hytte på 4 x 5 blokker?
 //     Returner arealet av et rektangel (bredde ganger høyde)
@@ -37,7 +34,6 @@ function rektangelAreal(bredde, hoyde) {
 }
 
 // Oppgave 3: En venn i USA spør på Discord hvor kaldt det er i Tromsø.
-//     Temperaturen er -6 grader C. 
 //     Gjør om celsius til fahrenheit.  Formel: F = C * 9/5 + 32
 //     (Den motsatte formelen er C = (F - 32) * 5/9.)
 function celsiusTilFahrenheit(celsius) {
@@ -231,3 +227,80 @@ function toppTre(resultater) {
 // Dette fikk jeg godt til:
 // Dette var vanskelig:
 // Dette vil jeg øve mer på:
+
+
+
+
+
+
+
+
+
+
+// =====================================================
+// AUTOMATISK SJEKK – ikke endre noe under denne linja
+// =====================================================
+let antallOk = 0;
+let antallSjekker = 0;
+
+function sjekk(beskrivelse, kjor, forventet) {
+  antallSjekker++;
+  let faktisk;
+  try {
+    faktisk = kjor();
+  } catch (feil) {
+    console.log(`FEIL  ${beskrivelse}  (krasjet: ${feil.message})`);
+    return;
+  }
+  const likt = JSON.stringify(faktisk) === JSON.stringify(forventet);
+  if (likt) antallOk++;
+  console.log(`${likt ? "OK  " : "FEIL"}  ${beskrivelse}  (fikk: ${JSON.stringify(faktisk)}, forventet: ${JSON.stringify(forventet)})`);
+}
+
+console.log("\n===== DEL 1: VÆRAPPEN =====");
+console.log("\n--- GRØNN ---");
+sjekk("1  hilsen('Ola')", () => hilsen("Ola"), "Hei, Ola!");
+sjekk("2  rektangelAreal(4, 5)", () => rektangelAreal(4, 5), 20);
+sjekk("3  celsiusTilFahrenheit(100)", () => celsiusTilFahrenheit(100), 212);
+sjekk("3  celsiusTilFahrenheit(-40)", () => celsiusTilFahrenheit(-40), -40);
+
+console.log("\n--- GUL ---");
+sjekk("4  sum(temperaturer)", () => sum(temperaturer), -33);
+sjekk("4  sum([])", () => sum([]), 0);
+sjekk("5  gjennomsnitt([2, 4, 6])", () => gjennomsnitt([2, 4, 6]), 4);
+sjekk("6  antallUnderNull(temperaturer)", () => antallUnderNull(temperaturer), 6);
+
+console.log("\n--- RØD ---");
+sjekk("7  storste(temperaturer)", () => storste(temperaturer), 1);
+sjekk("7  storste([-5, -2, -9])", () => storste([-5, -2, -9]), -2);
+sjekk("8  bareKuldegrader(temperaturer)", () => bareKuldegrader(temperaturer), [-4, -6, -2, -8, -11, -3]);
+sjekk("9  sorterStigende(temperaturer)", () => sorterStigende(temperaturer), [-11, -8, -6, -4, -3, -2, 1]);
+sjekk("8–9 temperaturer er uendret", () => temperaturer, [-4, -6, -2, 1, -8, -11, -3]);
+
+console.log("\n===== DEL 2: SPILL =====");
+console.log("\n--- GRØNN ---");
+sjekk("10 lagGamertag('Ola', 99)", () => lagGamertag("Ola", 99), "Ola99");
+sjekk("11 erGammelNok(16, 18)", () => erGammelNok(16, 18), false);
+sjekk("11 erGammelNok(18, 18)", () => erGammelNok(18, 18), true);
+sjekk("12 billettpris(true)", () => billettpris(true), 100);
+sjekk("12 billettpris(false)", () => billettpris(false), 150);
+
+console.log("\n--- GUL ---");
+sjekk("13 velgFraksjon(5000, 5000, 'Horde')", () => velgFraksjon(5000, 5000, "Horde"), "Welcome to the Horde!");
+sjekk("13 velgFraksjon(4500, 5500, 'Alliance')", () => velgFraksjon(4500, 5500, "Alliance"), "Welcome to the Alliance!");
+sjekk("13 velgFraksjon(4500, 5500, 'Horde')", () => velgFraksjon(4500, 5500, "Horde"), "The faction is currently unavailable on this ruleset due to population imbalance");
+sjekk("14 antallOver(runder, 100)", () => antallOver(runder, 100), 3);
+
+console.log("\n===== DEL 3: BREILAN =====");
+console.log("\n--- GRØNN ---");
+sjekk("15 kanDelta(16, 'GTA 6')", () => kanDelta(16, "GTA 6"), false);
+sjekk("15 kanDelta(16, 'Fortnite')", () => kanDelta(16, "Fortnite"), true);
+
+console.log("\n--- GUL ---");
+sjekk("16 totalInntekt(deltakere)", () => totalInntekt(deltakere), 700);
+
+console.log("\n--- RØD ---");
+sjekk("17 toppTre(resultater)", () => toppTre(resultater), ["Kari", "Jonas", "Ali"]);
+sjekk("17 resultater er uendret", () => resultater.map((r) => r.navn), ["Ola", "Kari", "Ali", "Emma", "Jonas"]);
+
+console.log(`\nDu har ${antallOk} av ${antallSjekker} OK.`);
