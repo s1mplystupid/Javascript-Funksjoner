@@ -53,14 +53,16 @@ function celsiusTilFahrenheit(celsius) {
 function sum(tall) {
   let total = 0
 
-  for 
+  for (let i = 0; i < temperaturer.length; i++) {
+    total += temperaturer[i];
+  }
 
-  return total;
+  return total
 }
 
 // Oppgave 5: Returner gjennomsnittet av tallene. Gjenbruk sum()!
 function gjennomsnitt(tall) {
-  // LØSNING
+  
 }
 
 // Oppgave 6: Hvor mange dager med kuldegrader var det? (Trenger du vinterdekk?)
